@@ -4,7 +4,7 @@ A simple web app that demonstrates the difference between a frontend-only app an
 
 **Part 1:** Open the file as-is. You can add fish, but they disappear when you refresh. That is the point — there is no database yet.
 
-**Part 2:** Follow the steps below to connect your own Supabase database. After that, fish persist across refreshes because they are stored in a real database, not just in the browser's memory.
+**Part 2:** The app is already connected to Parker's Supabase project. Fish persist across refreshes because they are stored in a real database, not just in the browser's memory.
 
 > This copy is already connected to Parker's Supabase project. The browser uses a publishable key and the `fish` table has row-level security enabled with public read and insert policies. Never put a Supabase secret key in this file.
 
@@ -38,18 +38,19 @@ Do not double-click the file to open it — that loads it as a `file://` URL, wh
 2. Install the **Live Server** extension if you do not have it yet: click the Extensions icon on the left sidebar (or press Ctrl+Shift+X / Cmd+Shift+X), search for "Live Server" by Ritwick Dey, and click Install.
 3. Open the `aquarium-github` folder in VS Code (File → Open Folder).
 4. Right-click `index.html` in the Explorer panel on the left → **Open with Live Server**.
-5. Your browser should open automatically at `http://127.0.0.1:5500`. You should see the aquarium with three starter fish and an orange **"Demo mode"** banner at the top.
+5. Your browser should open automatically at `http://127.0.0.1:5500`. After the connection loads, the banner should turn green and say **"Connected to Supabase!"**.
 
 ### Step 3: Try the demo
 
 1. Add a fish using the form on the right.
-2. Notice the fish appears in the list.
-3. Now refresh the page (press F5 or Ctrl+R / Cmd+R).
-4. The fish you added is gone. That is because nothing is saved to a database yet.
+2. Refresh the page (press F5 or Ctrl+R / Cmd+R).
+3. The fish remains in the list because it was saved to Supabase.
 
 ---
 
-## Part 2 — Connect a real database with Supabase
+## Part 2 — Connect a different Supabase database
+
+The project is already configured. Follow these steps only if you want to connect a different Supabase project.
 
 ### Step 4: Create a Supabase account
 
