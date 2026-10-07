@@ -2,7 +2,7 @@
 
 A simple web app that demonstrates the difference between a frontend-only app and one connected to a real database.
 
-**Part 1:** Open the file as-is. You can add fish, but they disappear when you refresh. That is the point — there is no database yet.
+**Part 1:** Open the app as-is. It is already connected to Parker's Supabase database, so fish persist when you refresh.
 
 **Part 2:** The app is already connected to Parker's Supabase project. Fish persist across refreshes because they are stored in a real database, not just in the browser's memory.
 
@@ -15,7 +15,7 @@ A simple web app that demonstrates the difference between a frontend-only app an
 - A web browser (Chrome or Firefox recommended)
 - A text editor — [VS Code](https://code.visualstudio.com/) is free and works well
 - Your GitHub account (you already have one)
-- A Supabase account — free, no credit card, you will create one in Step 3
+- A Supabase account, only if you want to connect a different project
 
 ---
 
