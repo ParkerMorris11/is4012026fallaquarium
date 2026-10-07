@@ -6,6 +6,8 @@ A simple web app that demonstrates the difference between a frontend-only app an
 
 **Part 2:** Follow the steps below to connect your own Supabase database. After that, fish persist across refreshes because they are stored in a real database, not just in the browser's memory.
 
+> This copy is already connected to Parker's Supabase project. The browser uses a publishable key and the `fish` table has row-level security enabled with public read and insert policies. Never put a Supabase secret key in this file.
+
 ---
 
 ## What you need
@@ -70,7 +72,7 @@ This is where you define what data your app will store. Think of it as building 
 1. In the left sidebar, click **Table Editor**.
 2. Click **Create a new table**.
 3. Name the table: `fish` (lowercase, no spaces).
-4. **Uncheck** "Enable Row Level Security (RLS)" — leave it off for now.
+4. **Keep** "Enable Row Level Security (RLS)" checked.
 5. Supabase automatically adds `id` and `created_at` columns. Keep those.
 6. Add these three columns by clicking **Add column** for each:
 
@@ -80,7 +82,7 @@ This is where you define what data your app will store. Think of it as building 
    | `species` | `text` | *(leave blank)* | No     |
    | `color`   | `text` | *(leave blank)* | Yes    |
 
-7. Click **Save**.
+7. Click **Save**. Then add a SELECT policy and an INSERT policy for the `anon` role. Do not disable RLS.
 
 Your database is ready.
 
@@ -100,20 +102,20 @@ Keep this browser tab open — you will need both values in the next step.
 ### Step 8: Add your credentials to the app
 
 1. Open `index.html` in VS Code (right-click the file → Open with → VS Code, or open VS Code and drag the file in).
-2. Use Find (Ctrl+F / Cmd+F) and search for `YOUR_PROJECT_URL` to jump straight to the right spot. You are looking for these three lines:
+2. For a different Supabase project, use Find (Ctrl+F / Cmd+F) and search for `SUPABASE_URL` to jump straight to the project settings. These are the three lines:
 
 ```js
-const SUPABASE_URL = 'YOUR_PROJECT_URL'   // <-- paste here
-const SUPABASE_KEY = 'YOUR_ANON_KEY'      // <-- paste here
-const USE_SUPABASE = false                // <-- change to true once credentials are filled in
+const SUPABASE_URL = 'https://your-project-ref.supabase.co'
+const SUPABASE_KEY = 'sb_publishable_...'
+const USE_SUPABASE = true
 ```
 
-3. Replace `'YOUR_PROJECT_URL'` with your Project URL (keep the quotes).
+3. Replace the project URL with your Project URL (keep the quotes).
 
 > [!WARNING]
 > The URL must end in `.supabase.co` with **nothing after it**. If you copied it from the API settings page it may include `/rest/v1/` at the end — delete that part or the app will not be able to reach your database.
-4. Replace `'YOUR_ANON_KEY'` with your publishable key (keep the quotes).
-5. Change `false` to `true` on the `USE_SUPABASE` line.
+4. Replace the publishable key with your key (keep the quotes).
+5. Keep `USE_SUPABASE` set to `true`.
 6. Save the file (Ctrl+S / Cmd+S).
 
 Example of what it should look like after your edits:
@@ -143,7 +145,7 @@ const USE_SUPABASE = true
 - Open the browser's developer tools (F12 → Console tab) and look for an error message.
 
 **I see a Supabase error about RLS or permissions**
-- Go back to your Supabase dashboard → Table Editor → click on the `fish` table → go to the **RLS** tab and make sure it is disabled.
+- Keep RLS enabled. In the Supabase dashboard, confirm the `fish` table has SELECT and INSERT policies for the `anon` role.
 
 **The page is blank or I see a JavaScript error**
 - Make sure `USE_SUPABASE` is spelled exactly right (no typos, still inside the script section).
